@@ -26,14 +26,14 @@ function sortingAnagram(inputArray) {
       // jika anagram
       if (isAnagram) {
         // masukkan ke temporary
-        temp.push(inputArray[i + 1]);
+        temp[temp.length] = inputArray[i + 1];
 
         // lalu jadikan null
         inputArray[i + 1] = null;
       }
     }
 
-    result.push(temp);
+    result[result.length] = temp;
   }
   return result;
 }
