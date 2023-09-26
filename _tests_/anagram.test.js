@@ -1,4 +1,4 @@
-const { areAnagram } = require("../anagram");
+const { areAnagram, sortingAnagram } = require("../anagram");
 
 describe("areAnagram function unit test", () => {
   /**
@@ -41,5 +41,40 @@ describe("areAnagram function unit test", () => {
     const a = "budha";
     const b = "buda ";
     expect(areAnagram(a, b)).toEqual(false);
+  });
+});
+
+// Membuat kelompok pengujian dengan describe
+describe("Sorting Anagrams", () => {
+  // Test case 1: Test dengan array kosong
+  test("Empty Array", () => {
+    expect(sortingAnagram([])).toEqual([]);
+  });
+
+  // Test case 2: Test dengan array yang tidak mengandung anagram
+  test("No Anagrams", () => {
+    const inputArray = ["apple", "banana", "cherry", "dog"];
+    const result = [["apple"], ["banana"], ["cherry"], ["dog"]];
+    expect(sortingAnagram(inputArray)).toEqual(result);
+  });
+
+  // Test case 3: Test dengan array yang mengandung anagram
+  test("With Anagrams", () => {
+    const inputArray = [
+      "cook",
+      "save",
+      "taste",
+      "aves",
+      "vase",
+      "state",
+      "map",
+    ];
+    const result = [
+      ["cook"],
+      ["save", "aves", "vase"],
+      ["taste", "state"],
+      ["map"],
+    ];
+    expect(sortingAnagram(inputArray)).toEqual(result);
   });
 });

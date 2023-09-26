@@ -1,14 +1,42 @@
-// const inputArray = ["cook", "save", "taste", "aves", "vase", "state", "map"];
+/**
+ * Sorting array of word to each their anagram
+ * @param {string[]} inputArray - An array of strings to be processed.
+ * @returns {Array<Array<string>>} array string in array of each anagram result.
+ */
+function sortingAnagram(inputArray) {
+  let result = [];
 
-// inputArray.forEach((element, index) => {
-//   console.log(`${element}. ${index}`);
-// });
+  for (let index = 0; index < inputArray.length; index++) {
+    // cek apakah yang dijadikan patokan null
+    if (inputArray[index] == null) {
+      continue;
+    }
+    // masukkan ke array temporary
+    let temp = [inputArray[index]];
 
-// var s = "cook";
-// for (let index = 0; index < s.length; index++) {
-//   const element = s[index];
-//   console.log(`${element}. ${index}`);
-// }
+    // // cek dengan data setelahnya
+    for (let i = index; i < inputArray.length; i++) {
+      // jika data setelahnya null langsung lanjutkan
+      if (inputArray[i + 1] == null) {
+        continue;
+      }
+      // cek apakah anagram
+      let isAnagram = areAnagram(inputArray[index], inputArray[i + 1]);
+
+      // jika anagram
+      if (isAnagram) {
+        // masukkan ke temporary
+        temp.push(inputArray[i + 1]);
+
+        // lalu jadikan null
+        inputArray[i + 1] = null;
+      }
+    }
+
+    result.push(temp);
+  }
+  return result;
+}
 
 /**
  * Comparing two word are an anagram
@@ -44,3 +72,8 @@ function areAnagram(a, b) {
   }
   return true;
 }
+
+module.exports = {
+  sortingAnagram,
+  areAnagram,
+};
