@@ -11,32 +11,32 @@
 // }
 
 /**
- * Membandingkan apakah dua kata merupakan sebuah anagram
- * @param {string} a kata pertama
- * @param {string} b kata kedua
+ * Comparing two word are an anagram
+ * @param {string} a first word
+ * @param {string} b second word
  * @returns {Boolean}
  */
 function areAnagram(a, b) {
-  // Menghilangkan spasi dan mengubah huruf menjadi huruf kecil agar tidak bersifat case-sensitive.
+  // remove space before and after, and make it lower case
   a = a.trim().toLowerCase();
   b = b.trim().toLowerCase();
 
-  // periksa apakah panjang keduanya sama (jumlah katanya)
+  // check are length of two word same
   if (a.length !== b.length) {
     return false;
   }
 
-  // menghitung jumlah tiap-tiap katanya
+  // counting every char in each word
   const charCountA = {}; // {char1:int, char2:int}
   for (const char of a) {
     charCountA[char] = /*true||false*/ (charCountA[char] || 0) + 1;
   }
   const charCountB = {}; // {char1:int, char2:int}
-  for (const char of a) {
+  for (const char of b) {
     charCountB[char] = /*true||false*/ (charCountB[char] || 0) + 1;
   }
 
-  // Membandingkan jumlah karakter dalam kedua objek.
+  // compare whether the number of characters for each word is the same
   for (const char in charCountA) {
     if (charCountA[char] !== charCountB[char]) {
       return false;
@@ -44,5 +44,3 @@ function areAnagram(a, b) {
   }
   return true;
 }
-
-console.log(areAnagram(" tikus", " sikuT "));

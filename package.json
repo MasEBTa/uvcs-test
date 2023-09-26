@@ -1,0 +1,14 @@
+{
+  "name": "uvcr-test",
+  "version": "1.0.0",
+  "description": "test coding",
+  "main": "main.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Muhammad Sholikhul Ebta",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
